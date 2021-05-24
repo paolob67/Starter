@@ -1,7 +1,4 @@
-var express = require('express');
-var app = express();
+#!/bin/bash
 
-app.use(express.static(__dirname + '/app/www'));
-
-
-var server = app.listen(8080);
+cd /app
+ng run app:serve --host=localhost --port=8080
