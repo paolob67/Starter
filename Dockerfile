@@ -2,7 +2,7 @@
 FROM node:latest AS builder
 WORKDIR /app
 COPY ./ ./
-RUN npm install -g ionic
+RUN npm install -g @ionic/cli
 RUN npm install
 RUN npm run-script build
 # setup server
