@@ -4,10 +4,10 @@ WORKDIR /app
 COPY ./ ./
 RUN npm install -g @ionic/cli
 RUN npm install
-RUN npm run-script build
+#RUN npm run-script build
 # serve content
 EXPOSE 8080
-CMD ["node", "server.js"]
+CMD ["/app/start.sh"]
 
 # setup server
 
