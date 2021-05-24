@@ -18,4 +18,4 @@ FROM httpd:latest
 RUN sed -i "s/80/8080/g" /usr/local/apache2/conf/httpd.conf
 COPY --from=builder /app/www/ /usr/local/apache2/htdocs/
 EXPOSE 8080
-ENTRYPOINT ["/usr/sbin/httpd", "-D", "FOREGROUND"]
+CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
