@@ -1,4 +1,4 @@
 #!/bin/bash
 
 cd /app
-ng run app:serve --host=localhost --port=8080
+ionic serve --no-open --port=8080
