@@ -11,14 +11,14 @@ RUN npm run-script build
 
 # setup server
 
-FROM nginx:latest
-RUN rm -rf /usr/share/nginx/html/*
-COPY --from=builder /app/www/ /usr/share/nginx/html/
-COPY nginx.conf /etc/nginx/nginx.conf
-EXPOSE 8080
-CMD ["nginx", "-g", "daemon off;"]
-# FROM httpd:latest
-# RUN sed -i "s/80/8080/g" /usr/local/apache2/conf/httpd.conf
-# COPY --from=builder /app/www/ /usr/local/apache2/htdocs/
+# FROM nginx:latest
+# RUN rm -rf /usr/share/nginx/html/*
+# COPY --from=builder /app/www/ /usr/share/nginx/html/
+# COPY nginx.conf /etc/nginx/nginx.conf
 # EXPOSE 8080
-# CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
+# CMD ["nginx", "-g", "daemon off;"]
+FROM httpd:latest
+RUN sed -i "s/80/8080/g" /usr/local/apache2/conf/httpd.conf
+COPY --from=builder /app/www/ /usr/local/apache2/htdocs/
+EXPOSE 8080
+CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
