@@ -1,10 +1,10 @@
 # build the app
 FROM node:latest AS builder
+ENV "NODE_OPTIONS"="--openssl-legacy-provider"
 WORKDIR /app
 COPY ./ ./
 RUN npm install -g @ionic/cli
 RUN npm install
-RUN export NODE_OPTIONS=--openssl-legacy-provider
 RUN npm run-script build
 
 # setup http server on port 8080
