@@ -11,4 +11,5 @@ FROM httpd:latest
 RUN sed -i "s/80/8080/g" /usr/local/apache2/conf/httpd.conf
 COPY --from=builder /app/www/ /usr/local/apache2/htdocs/
 EXPOSE 8080
+RUN chmod +w /usr/local/apache2/logs
 CMD ["httpd-foreground"]
